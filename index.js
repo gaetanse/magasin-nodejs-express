@@ -12,29 +12,20 @@ app.get('/clients', (req, res)=>{
 })
 
 app.get('/clients/:id' ,(req,res) => {
-    
+    res.send(data.afficherClient(req.params.id))
 })
-
-
-
 
 app.get('/produits/:id' ,(req,res) => {
-    
+    res.send(data.afficherProduit(req.params.id))
 })
 
-
-
-
-app.get('/commandes', (req, res)=>{
-    res.send(data.afficherListeClients())
+app.get('/commandes', (res)=>{
+    res.send(data.afficherListeCommandes())
 })
 
 app.get('/commandes/:id' ,(req,res) => {
-    
+    res.send(data.afficherCommande(req.params.id))
 })
-
-
-
 
 app.post('/clients', (req, res) => {
     const {nom, prenom, telephone} = req.body

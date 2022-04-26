@@ -32,14 +32,14 @@ export class Data{
     afficherClient(id){
 
     }
-    creerClient(id,nom,prenom,telephone){
-        
+    creerClient(nom,prenom,telephone){
+        this.clients.push(new Client(++this.compteurClient,nom,prenom,telephone))
     }
     afficherProduit(id){
         
     }
-    creerProduit(id,titre,prix,stock){
-
+    creerProduit(titre,prix,stock){
+        this.produits.push(new Client(++this.compteurProduit,titre,prix,stock))
     }
     afficherListeCommandes(){
         readFile(this.fichierCommande, (err, data) => {
@@ -56,7 +56,7 @@ export class Data{
     afficherCommande(id){
         
     }
-    creerCommande(id,client,listeProduits){
-
+    creerCommande(client,listeProduits){
+        this.produits.push(new Commande(++this.compteurProduit,client,listeProduits))
     }
 }
