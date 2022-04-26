@@ -1,14 +1,17 @@
 import express from "express"
+import { Data } from "./classes/data.js"
 const app = express()
-
 app.use(express.json())
 
+const data = new Data()
 
-app.get('/clients')
+app.get('/clients', (req, res)=>{
+    res.send(data.afficherListeClients())
+})
 
 app.get('/clients/:id' ,(req,res) => {
-    res.json = dataService.FindClientsByID(req.params.id)
-} )
+    
+})
 
 
 
@@ -27,5 +30,5 @@ app.get('/clients/:id' ,(req,res) => {
 
 
 
-api.listen(888, () => {
+app.listen(888, () => {
 })
