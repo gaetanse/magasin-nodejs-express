@@ -19,7 +19,7 @@ app.get('/produits/:id' ,(req,res) => {
     res.send(data.afficherProduit(req.params.id-1))
 })
 
-app.get('/commandes', (res)=>{
+app.get('/commandes', (req,res)=>{
     res.send(data.afficherListeCommandes())
 })
 

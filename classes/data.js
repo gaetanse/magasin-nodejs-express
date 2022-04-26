@@ -59,7 +59,7 @@ export class Data{
         this.produits.push(new Client(this.compteurProduit++,titre,prix,stock))
         writeFileSync(this.fichierProduit, JSON.stringify(this.produits))
     }
-    afficherListeCommandes(){
+    async afficherListeCommandes(){
         readFile(this.fichierCommande, (err, data) => {
             if(err == null){
                 console.log(data.toString())
@@ -72,7 +72,7 @@ export class Data{
         })
     }
     afficherCommande(id){
-        let rawdata = readFileSync(this.fichierClient);
+        let rawdata = readFileSync(this.fichierCommande);
         let recuperer = JSON.parse(rawdata);
         for(let i=0;i<recuperer.length;++i){
             if(recuperer[i]['id']===id){
@@ -83,7 +83,7 @@ export class Data{
         return []
     }
     creerCommande(client,listeProduits){
-        this.commandes.push(new Commande(this.compteurProduit++,client,listeProduits))
+        this.commandes.push(new Commande(this.compteurCommande++,client,listeProduits))
         writeFileSync(this.fichierCommande, JSON.stringify(this.commandes))
     }
 }
