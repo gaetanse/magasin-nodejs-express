@@ -1,9 +1,11 @@
 export class Data{
     constructor(){
-        
+        this.commandes = []
+        this.produits = []
+        this.clients = []
     }
     afficherListeClients(){
-        
+        return this.clients
     }
     afficherClient(id){
 
