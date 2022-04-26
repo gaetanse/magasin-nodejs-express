@@ -25,7 +25,7 @@ export class Data{
             }
             else{
                 console.log(err)
-                return "erreur chargement clien json"
+                return "erreur chargement clients json"
             }
         })
     }
@@ -42,7 +42,16 @@ export class Data{
 
     }
     afficherListeCommandes(){
-
+        readFile(this.fichierCommande, (err, data) => {
+            if(err == null){
+                console.log(data.toString())
+                return data.toString()
+            }
+            else{
+                console.log(err)
+                return "erreur chargement commandes json"
+            }
+        })
     }
     afficherCommande(id){
         
