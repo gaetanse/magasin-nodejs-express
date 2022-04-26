@@ -80,6 +80,7 @@ export class Data{
                 return recuperer[i]
             }
         }
+        console.log("")
         return []
     }
     creerCommande(client,listeProduits){
