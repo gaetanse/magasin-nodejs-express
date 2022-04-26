@@ -12,11 +12,11 @@ app.get('/clients', (req, res)=>{
 })
 
 app.get('/clients/:id' ,(req,res) => {
-    res.send(data.afficherClient(req.params.id))
+    res.send(data.afficherClient(req.params.id-1))
 })
 
 app.get('/produits/:id' ,(req,res) => {
-    res.send(data.afficherProduit(req.params.id))
+    res.send(data.afficherProduit(req.params.id-1))
 })
 
 app.get('/commandes', (res)=>{
@@ -24,7 +24,7 @@ app.get('/commandes', (res)=>{
 })
 
 app.get('/commandes/:id' ,(req,res) => {
-    res.send(data.afficherCommande(req.params.id))
+    res.send(data.afficherCommande(req.params.id-1))
 })
 
 app.post('/clients', (req, res) => {

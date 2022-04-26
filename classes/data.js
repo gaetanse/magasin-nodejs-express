@@ -1,4 +1,4 @@
-import {readFileSync,readFile} from "fs"
+import {readFileSync,readFile,writeFileSync} from "fs"
 import { Client } from "./client.js"
 import { Produit } from "./produit.js"
 import { Commande } from "./commande.js"
@@ -30,16 +30,34 @@ export class Data{
         })
     }
     afficherClient(id){
-
+        let rawdata = readFileSync(this.fichierClient);
+        let recuperer = JSON.parse(rawdata);
+        for(let i=0;i<recuperer.length;++i){
+            if(recuperer[i]['id']===id){
+                console.log( recuperer[i])
+                return recuperer[i]
+            }
+        }
+        return []
     }
     creerClient(nom,prenom,telephone){
-        this.clients.push(new Client(++this.compteurClient,nom,prenom,telephone))
+        this.clients.push(new Client(this.compteurClient++,nom,prenom,telephone))
+        writeFileSync(this.fichierClient, JSON.stringify(this.clients))
     }
     afficherProduit(id){
-        
+        let rawdata = readFileSync(this.fichierClient);
+        let recuperer = JSON.parse(rawdata);
+        for(let i=0;i<recuperer.length;++i){
+            if(recuperer[i]['id']===id){
+                console.log( recuperer[i])
+                return recuperer[i]
+            }
+        }
+        return []
     }
     creerProduit(titre,prix,stock){
-        this.produits.push(new Client(++this.compteurProduit,titre,prix,stock))
+        this.produits.push(new Client(this.compteurProduit++,titre,prix,stock))
+        writeFileSync(this.fichierProduit, JSON.stringify(this.produits))
     }
     afficherListeCommandes(){
         readFile(this.fichierCommande, (err, data) => {
@@ -54,9 +72,18 @@ export class Data{
         })
     }
     afficherCommande(id){
-        
+        let rawdata = readFileSync(this.fichierClient);
+        let recuperer = JSON.parse(rawdata);
+        for(let i=0;i<recuperer.length;++i){
+            if(recuperer[i]['id']===id){
+                console.log( recuperer[i])
+                return recuperer[i]
+            }
+        }
+        return []
     }
     creerCommande(client,listeProduits){
-        this.produits.push(new Commande(++this.compteurProduit,client,listeProduits))
+        this.commandes.push(new Commande(this.compteurProduit++,client,listeProduits))
+        writeFileSync(this.fichierCommande, JSON.stringify(this.commandes))
     }
 }
